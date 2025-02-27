@@ -3,21 +3,15 @@ import 'package:flutter/material.dart';
 class ColorManager {
   //home page
   static Color primary = const Color(0xffFFFFFF);
-  static Color blue = const Color(0xff01B7F1);
   static Color black = const Color(0xff000000);
-  static Color softBlack = const Color(0xff1E1E1E);
-  static Color mediumGrey = const Color(0xffA1A1A1);
-  static Color blueTeal =const Color(0x8F005773); //petrol blue with opacity 56
-  static Color blueTeal22 =const Color(0xff0D728C);
-  static Color blueTeal222 =const Color(0xE0242424);
-  //petrol blue with opacity 56
-
-  //prayer time page
-  static Color softBlack50 = const Color(0x801E1E1E); // soft black with opacity 50;
-  static Color white50 = const Color(0x80F5F5F5); //smoked white with opacity 50
-  static Color babyBlue =const Color(0xffEDFBFF);
-
-  //settings 1 page
-   static Color lightMediumGrey = const Color(0xffADADAD);
-
+  static Color black1Eff = const Color(0xff1E1E1E);
+  static Color black1E80 = const Color(0x801E1E1E);
+  static Color greyA1 = const Color(0xffA1A1A1);
+  static Color blueTeal005 =const Color(0x8F005773); //petrol blue with opacity 56
+  static Color blueTeal1B=const Color(0xff1B6180);
+  static Color blueTeal09=const Color(0xff096C86);
+  static Color babyBlueED =const Color(0xffEDFBFF);
+  static Color white50 = const Color(0x80F5F5F5);
+   //azkar 0 page
+  static Color lightBlueB2D = const Color(0xB2D8F5FF);
 }

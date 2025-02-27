@@ -1,13 +1,12 @@
 
 import 'package:flutter/painting.dart';
-
 import 'font_manager.dart';
-
-  TextStyle _getTextStyle(double fontSize, FontWeight fontWeight, Color color) {
-    return TextStyle(color: color, fontSize: fontSize, fontWeight: fontWeight);
+  TextStyle _getTextStyle(double fontSize, FontWeight fontWeight, Color color,
+      {String fontFamily = FontConstants.fontFamily}) {
+    return TextStyle(color: color, fontSize: fontSize, fontWeight: fontWeight,fontFamily: fontFamily);
   }
   TextStyle getRegularStyle(
-      {double fontSize = FontSize.s12, required Color color}) {
+      {double fontSize = FontSize.s12, required Color color }) {
     return _getTextStyle(fontSize, FontWeightManager.regular, color);
   }
 

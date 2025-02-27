@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamy/presentation/resources/color_manager.dart';
+import 'package:islamy/presentation/resources/styles_manager.dart';
 import '../resources/assets_manager.dart';
-import '../resources/font_manager.dart';
 import '../resources/strings_manager.dart';
-import '../resources/styles_manager.dart';
 
 class OnBoardingView extends StatefulWidget {
-  OnBoardingView({super.key});
+  const OnBoardingView({super.key});
 
   @override
   State<OnBoardingView> createState() => _OnBoardingViewState();
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
-  PageController _pageControler = PageController();
+  final PageController _pageControler = PageController();
   int _pageIndex = 0;
   List<Model> model = [
     Model(
@@ -30,7 +28,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         title: AppStrings.onBoardingTitle3,
         description: AppStrings.onBoardingSubTitle3),
   ];
-
+@override
+  void dispose() {
+  _pageControler.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,35 +60,79 @@ class Model {
 
 class PageViewMethod extends StatelessWidget {
   Model model;
+
   PageViewMethod(this.model, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-            width: 375.w,
-            height: 481.h,
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child:
+      Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
             child: Image.asset(
               model.image,
-              fit: BoxFit.fill,
-            )),
-        Column(
-          children: [
-            Text(
-              "scholar",
-              style: TextStyle(color: ColorManager.blueTeal22,fontSize: 32,fontWeight: FontWeight.bold),
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: 300,
             ),
-            Text(
+          ),
+          SizedBox(height: 20),
+          Text(
+            model.title,
+            style: getSemiBoldStyle(color: ColorManager.blueTeal22),
+          ),
+          SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
               model.description,
-              style: getRegularStyle(
-                  color: ColorManager.blueTeal222, fontSize: FontSize.s24),
+              textAlign: TextAlign.center,
+              style: getRegularStyle(color: ColorManager.blueTeal222),
             ),
-          ],
-        ),
+          ),
+          Spacer(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                FloatingActionButton(
+                  backgroundColor: Color(0xFF025B56),
+                  onPressed: () {},
+                  child: Icon(Icons.arrow_back_ios),
+                ),
+                Row(
+                  children: [
+                    buildDot(true),
+                    buildDot(false),
+                    buildDot(false),
+                  ],
+                ),
+                SizedBox(width: 50),
+              ],
+            ),
+          ),
+          SizedBox(height: 40),
+        ],
+      ),
+    );
+  }
 
-      ],
+  Widget buildDot(bool isActive) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 5),
+      width: 8,
+      height: 8,
+      decoration: BoxDecoration(
+        color: isActive ? Color(0xFF025B56) : Colors.grey,
+        shape: BoxShape.circle,
+      ),
     );
   }
 }
