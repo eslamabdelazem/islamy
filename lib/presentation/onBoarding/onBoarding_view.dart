@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islamy/presentation/resources/color_manager.dart';
 import 'package:islamy/presentation/resources/styles_manager.dart';
 import '../resources/assets_manager.dart';
+import '../resources/font_manager.dart';
 import '../resources/strings_manager.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -85,7 +86,7 @@ class PageViewMethod extends StatelessWidget {
           SizedBox(height: 20),
           Text(
             model.title,
-            style: getSemiBoldStyle(color: ColorManager.blueTeal),
+            style: Theme.of(context).textTheme.headlineLarge,
           ),
           SizedBox(height: 10),
           Padding(
@@ -93,7 +94,7 @@ class PageViewMethod extends StatelessWidget {
             child: Text(
               model.description,
               textAlign: TextAlign.center,
-              style: getRegularStyle(color: ColorManager.black24),
+              style:Theme.of(context).textTheme.bodyLarge,
             ),
           ),
           Spacer(),

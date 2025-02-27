@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/presentation/resources/routes_manager.dart';
+import 'package:islamy/presentation/resources/theme_manager.dart';
 import 'presentation/splash/splash_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -14,6 +15,8 @@ class MyApp extends StatelessWidget {
       designSize: Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
+
+        theme: getApplicationTheme(),
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

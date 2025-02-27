@@ -10,19 +10,18 @@ ThemeData getApplicationTheme() {
   return ThemeData(
     //main colors
     primaryColor: ColorManager.primary,
-    //appbar theme
-    appBarTheme: AppBarTheme(
-      centerTitle: true,
-      color: ColorManager.primary,
-      elevation: AppSize.s4,
-      titleTextStyle:
-          getRegularStyle(color: ColorManager.primary, fontSize: FontSize.s16)
-              as TextStyle?,
-    ),
+    // //appbar theme
+    // appBarTheme: AppBarTheme(
+    //   centerTitle: true,
+    //   color: ColorManager.primary,
+    //   elevation: AppSize.s4,
+    //   titleTextStyle:
+    //       getRegularStyle(color: ColorManager.primary, fontSize: FontSize.s16)
+    //           as TextStyle?,
+    // ),
     //text theme
     textTheme: TextTheme(
-        headlineLarge: getSemiBoldStyle(
-            color: ColorManager.primary, fontSize: FontSize.s16),
+        headlineLarge: getSemiBoldStyle(color: ColorManager.blueTeal,fontSize: FontSize.s32),
         headlineMedium:getRegularStyle(
             color: ColorManager.primary, fontSize: FontSize.s14) ,
         titleMedium: getMediumStyle(
@@ -30,7 +29,7 @@ ThemeData getApplicationTheme() {
         bodySmall: getRegularStyle(color: ColorManager.primary),
         displayLarge:
             getSemiBoldStyle(color: ColorManager.primary, fontSize: FontSize.s16),
-        bodyLarge: getRegularStyle(color: ColorManager.primary)),
+        bodyLarge: getRegularStyle(color: ColorManager.black24,fontSize: FontSize.s24),),
 
   );
 }
