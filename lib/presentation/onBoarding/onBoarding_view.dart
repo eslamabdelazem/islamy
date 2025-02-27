@@ -85,7 +85,7 @@ class PageViewMethod extends StatelessWidget {
           SizedBox(height: 20),
           Text(
             model.title,
-            style: getSemiBoldStyle(color: ColorManager.blueTeal22),
+            style: getSemiBoldStyle(color: ColorManager.blueTeal),
           ),
           SizedBox(height: 10),
           Padding(
@@ -93,7 +93,7 @@ class PageViewMethod extends StatelessWidget {
             child: Text(
               model.description,
               textAlign: TextAlign.center,
-              style: getRegularStyle(color: ColorManager.blueTeal222),
+              style: getRegularStyle(color: ColorManager.black24),
             ),
           ),
           Spacer(),
