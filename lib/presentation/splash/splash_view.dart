@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/presentation/resources/assets_manager.dart';
-
-import '../onBoarding/onBoarding_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../resources/routes_manager.dart';
 
 class SplashView extends StatefulWidget {
@@ -12,10 +11,24 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-  void _startSplash() {
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
-    });
+  void _startSplash() async {
+    await Future.delayed(Duration(seconds: 3));
+
+    if (mounted) {
+      try {
+        final prefs = await SharedPreferences.getInstance();
+        bool seenOnboarding = prefs.getBool('seen_onboarding') ?? false;
+
+
+        if (seenOnboarding) {
+          Navigator.pushReplacementNamed(context, Routes.home);
+        } else {
+          Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
+        }
+      } catch (e) {
+        Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
+      }
+    }
   }
 
   @override
