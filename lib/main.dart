@@ -28,7 +28,7 @@ void main() async {
       startLocale: const Locale('ar'),
       saveLocale: true,
       fallbackLocale: const Locale('ar'),
-      child:const SettingsScreen()
+      child:const PrayerTimeScreen()
     ),
   );
 }

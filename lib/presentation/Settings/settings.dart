@@ -32,7 +32,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp( debugShowCheckedModeBanner: false,
       home: Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold( backgroundColor: Colors.white,
@@ -69,7 +69,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const PrayerSettingsScreen(),
+                            builder: (context) => const PrayerSettings(),
                           ),
                         );
                       },

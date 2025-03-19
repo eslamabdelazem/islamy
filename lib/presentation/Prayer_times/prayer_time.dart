@@ -1,32 +1,21 @@
 import 'package:flutter/material.dart';
 import '../resources/color_manager.dart';
 
-class PrayerScreen extends StatelessWidget {
-  const PrayerScreen({super.key});
+
+class PrayerTimeScreen extends StatefulWidget {
+  const PrayerTimeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: PrayerTime(),
-    );
-  }
+  State<PrayerTimeScreen> createState() => _PrayerTimeScreenState();
 }
 
-class PrayerTime extends StatefulWidget {
-  const PrayerTime({super.key});
-
-  @override
-  State<PrayerTime> createState() => _PrayerTimeState();
-}
-
-class _PrayerTimeState extends State<PrayerTime> {
+class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   int selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
+    return MaterialApp( debugShowCheckedModeBanner: false,
+      home: Scaffold(
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -35,18 +24,19 @@ class _PrayerTimeState extends State<PrayerTime> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset('assets/icons/timeclock.png', width: 24),
-                    SizedBox(width: 4),
-                    Text(
-                      'وقت الصلاة',
-                      style: TextStyle(
+                  children: [ Text(
+                    'وقت الصلاة',
+                    style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                         fontFamily: 'Poppins',
                         color: ColorManager.blueTeal09
-                      ),
                     ),
+                  ),
+                    SizedBox(width: 4),
+                    Image.asset('assets/icons/timeclock.png', width: 24),
+
+
                   ],
                 ),
                 Padding(
@@ -54,8 +44,9 @@ class _PrayerTimeState extends State<PrayerTime> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+
                       Text(
-                        '12 الثلاثاء ديسمبر 2024',
+                        'المكان',
                         style: TextStyle(
                           color: ColorManager.greyA1 ,
                           fontSize: 12,
@@ -63,7 +54,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                         ),
                       ),
                       Text(
-                        'المكان',
+                        '12 الثلاثاء ديسمبر 2024',
                         style: TextStyle(
                           color: ColorManager.greyA1 ,
                           fontSize: 12,
@@ -77,7 +68,15 @@ class _PrayerTimeState extends State<PrayerTime> {
                   padding: const EdgeInsets.only(top:10,right: 50,left: 40),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: [  Text(
+                      'القاهرة, مصر',
+                      style: TextStyle(
+                        color: ColorManager.blueTeal09 ,
+                        fontSize: 18,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                       Text(
                         'الأحد ربيع الأول 1445',
                         style: TextStyle(
@@ -87,15 +86,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                           fontFamily: 'Poppins',
                         ),
                       ),
-                      Text(
-                        'القاهرة, مصر',
-                        style: TextStyle(
-                          color: ColorManager.blueTeal09 ,
-                          fontSize: 18,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+
                     ],
                   ),
                 ),
@@ -110,6 +101,11 @@ class _PrayerTimeState extends State<PrayerTime> {
                   padding: const EdgeInsets.only(right: 80),
                   child: Row(
                     children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 80),
+                        child: Text('4:55-',style: TextStyle(fontSize: 20,color: ColorManager.greyA1),),
+                      ),
+                      const SizedBox(width: 30,),
                       Column(
                         children: [
                           Text(
@@ -129,14 +125,15 @@ class _PrayerTimeState extends State<PrayerTime> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
+
                         ],
                       ),
-                      const SizedBox(width: 30,),
-                      Text('4:55-',style: TextStyle(fontSize: 20,color: ColorManager.greyA1),)
+
+
                     ],
                   ),
                 ),
-                SizedBox(height: 30),
+
                 Expanded(
                   child: ListView(
                     children: [
@@ -224,27 +221,28 @@ class PrayerTimeTile extends StatelessWidget {
       child: Container(
         color: isCurrent ? ColorManager.blueTeal09.withOpacity(0.1) : ColorManager.greyA1.withOpacity(0.1),
         child: ListTile(
-          leading: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(
-                imagePath,
-                width: 25,
-                color: isCurrent ? ColorManager.blueTeal09 : ColorManager.greyA1,
-              ),
-              const SizedBox(width: 8),
-              Text(prayerName,  style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color:isCurrent ? ColorManager.blueTeal09: ColorManager.greyA1)),
-            ],
-          ),
           title: Padding(
-            padding: const EdgeInsets.only(right: 100),
+            padding: const EdgeInsets.only(left: 109),
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset(volumeIcon, width: 25),
+
+
+                Text(prayerName,  style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color:isCurrent ? ColorManager.blueTeal09: ColorManager.greyA1)),
                 const SizedBox(width: 8),
-                Text(time, style: TextStyle(fontSize: 18,color:isCurrent ? ColorManager.blueTeal09 : ColorManager.greyA1)),
-              ],
+                Image.asset(
+                  imagePath,
+                  width: 25,
+                  color: isCurrent ? ColorManager.blueTeal09 : ColorManager.greyA1,
+                ), ],
             ),
+          ),
+          leading: Row( mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(volumeIcon, width: 25),
+              const SizedBox(width: 8),
+              Text(time, style: TextStyle(fontSize: 18,color:isCurrent ? ColorManager.blueTeal09 : ColorManager.greyA1)),
+            ],
           ),
         ),
       ),

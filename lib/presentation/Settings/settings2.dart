@@ -5,12 +5,6 @@ import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:islamy/presentation/Settings/settings.dart';
 
 import '../resources/color_manager.dart';
-class PrayerSettingsScreen extends StatelessWidget {
-  const PrayerSettingsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(home: PrayerSettings() ); } }
 
 
 class PrayerSettings extends StatefulWidget {
@@ -23,55 +17,57 @@ class PrayerSettings extends StatefulWidget {
 class _PrayerSettingsState extends State<PrayerSettings> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold( backgroundColor: Colors.white,
-       appBar:  AppBar(
-         title: Row( spacing: 3,
-           mainAxisAlignment: MainAxisAlignment.end,
-           children: [
-             Text(
-                 'وقت الصلاة',
-                 style: TextStyle(
-                   fontWeight: FontWeight.bold,
-                   fontSize: 20,
-                   fontFamily: 'Poppins',
-                   color: ColorManager.blueTeal09,
-                 )
-             ),
-             SizedBox(width: 8),
-             IconButton(
-               icon: Icon(Icons.arrow_forward, color: ColorManager.blueTeal09),
-               onPressed: () {
-                 Navigator.push(
-                   context,
-                   MaterialPageRoute(
-                     builder: (context) => SettingsScreen(),
-                   ),
-                 );
-               },
-             ),
+    return MaterialApp( debugShowCheckedModeBanner: false,
+      home: Scaffold( backgroundColor: Colors.white,
+         appBar:  AppBar(
+           title: Row( spacing: 3,
+             mainAxisAlignment: MainAxisAlignment.end,
+             children: [
+               Text(
+                   'وقت الصلاة',
+                   style: TextStyle(
+                     fontWeight: FontWeight.bold,
+                     fontSize: 20,
+                     fontFamily: 'Poppins',
+                     color: ColorManager.blueTeal09,
+                   )
+               ),
+               SizedBox(width: 8),
+               IconButton(
+                 icon: Icon(Icons.arrow_forward, color: ColorManager.blueTeal09),
+                 onPressed: () {
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                       builder: (context) => SettingsScreen(),
+                     ),
+                   );
+                 },
+               ),
 
 
 
-           ],
+             ],
+           ),
+           backgroundColor: Colors.white,
+           elevation: 0,
+           iconTheme: IconThemeData(color: ColorManager.blueTeal09),
          ),
-         backgroundColor: Colors.white,
-         elevation: 0,
-         iconTheme: IconThemeData(color: ColorManager.blueTeal09),
-       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: ListView(children: const [
-          PrayerTimeTile( prayerName: 'الفجر',  ),
-          SizedBox(height: 20),
-          PrayerTimeTile( prayerName: 'الظهر',  ),
-          SizedBox(height: 20),
-          PrayerTimeTile( prayerName: 'العصر',  ),
-          SizedBox(height: 20),
-          PrayerTimeTile( prayerName: 'المغرب',  ),
-          SizedBox(height: 20),
-          PrayerTimeTile( prayerName: 'العشاء',  )
+        body: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: ListView(children: const [
+            PrayerTimeTile( prayerName: 'الفجر',  ),
+            SizedBox(height: 20),
+            PrayerTimeTile( prayerName: 'الظهر',  ),
+            SizedBox(height: 20),
+            PrayerTimeTile( prayerName: 'العصر',  ),
+            SizedBox(height: 20),
+            PrayerTimeTile( prayerName: 'المغرب',  ),
+            SizedBox(height: 20),
+            PrayerTimeTile( prayerName: 'العشاء',  )
 
-        ],),
+          ],),
+        ),
       ),
     );
   }
