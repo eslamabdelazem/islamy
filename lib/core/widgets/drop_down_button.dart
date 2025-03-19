@@ -1,12 +1,13 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamy/core/extensions/context_extension.dart';
 import 'package:islamy/core/extensions/padding_extension.dart';
 import 'package:islamy/core/extensions/sized_box_helper.dart';
-import '../../config/language/locale_keys.g.dart';
 import '../../config/res/color_manager.dart';
+import '../../generated/locale_keys.g.dart';
 import '../helpers/validators.dart';
 import 'app_text.dart';
 import 'image_widgets/cached_image.dart';
@@ -76,7 +77,7 @@ class DefaultDropDownField<T> extends StatelessWidget {
             },
             searchFieldProps: TextFieldProps(
                 decoration: InputDecoration(
-              hintText: LocaleKeys.search,
+              hintText: LocaleKeys.search.tr(),
               prefixIcon: const Icon(Icons.search),
             )),
             menuProps: const MenuProps(

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +10,7 @@ import 'package:pinput/pinput.dart';
 import '../../../config/language/locale_keys.g.dart';
 import '../../../config/res/color_manager.dart';
 import '../../../config/res/constants_manager.dart';
+import '../../../generated/locale_keys.g.dart';
 import '../../helpers/validators.dart';
 
 class CustomPinTextField extends StatelessWidget {
@@ -45,7 +47,7 @@ class CustomPinTextField extends StatelessWidget {
             ],
             forceErrorState: state.hasError,
             validator: (value) => Validators.validateEmpty(value,
-                message: LocaleKeys.emptyOtpRequired),
+                message: LocaleKeys.empty_otp_required.tr()),
             autofocus: true,
             onChanged: (value) {
               state.didChange(value);

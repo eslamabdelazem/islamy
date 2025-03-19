@@ -1,7 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:islamy/core/helpers/loading_manager.dart';
+import 'package:islamy/core/widgets/offline_widget.dart';
 import 'package:islamy/presentation/resources/routes_manager.dart';
 import 'package:islamy/presentation/resources/theme_manager.dart';
+import 'config/res/constants_manager.dart';
 import 'core/helpers/state_builder/provider_state_builder.dart';
+import 'core/navifation/go.dart';
 import 'presentation/splash/splash_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -13,24 +18,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 812),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
-
-        theme: getApplicationTheme(),
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: [
-          Locale('ar'),
-        ],
-        locale: Locale('ar'),
-        onGenerateRoute: RoutesGenerator.getRoute,
-        initialRoute: Routes.splashRoute,
+        title: ConstantManager.projectName,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        navigatorKey: Go.navigatorKey,
         debugShowCheckedModeBanner: false,
         home: const SplashView(),
+        builder: (context, child) {
+          return OfflineWidget(
+            child: FullScreenLoadingManager(child: child!),
+          );
+        },
+
       ),
     );
   }

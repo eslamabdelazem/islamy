@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:islamy/core/extensions/padding_extension.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../config/language/locale_keys.g.dart';
 import '../../config/res/app_sizes.dart';
 import '../../config/res/color_manager.dart';
 import 'package:permission_handler/permission_handler.dart';
+import '../../generated/locale_keys.g.dart';
 import '../navifation/go.dart';
 import '../widgets/custom_loading.dart';
 import '../widgets/custom_messages.dart';
@@ -126,7 +126,7 @@ class Helpers {
               children: <Widget>[
                 ListTile(
                   leading: const Icon(Icons.photo_library),
-                  title: Text(LocaleKeys.photoLibrary),
+                  title: Text(LocaleKeys.photo_library.tr()),
                   onTap: () async {
                     final currentImage =
                         await picker.pickImage(source: ImageSource.gallery);
@@ -138,7 +138,7 @@ class Helpers {
                 ),
                 ListTile(
                   leading: const Icon(Icons.photo_camera),
-                  title: Text(LocaleKeys.camera),
+                  title: Text(LocaleKeys.camera.tr()),
                   onTap: () async {
                     final currentImage =
                         await picker.pickImage(source: ImageSource.camera);
