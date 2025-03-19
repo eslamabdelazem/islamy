@@ -24,7 +24,7 @@ class RoutesGenerator {
           ),
         );
       case Routes.home:
-        return MaterialPageRoute(builder: (_) =>  Home());
+        return MaterialPageRoute(builder: (_) =>  const Home());
       default:
         return unDefinedRoute();
     }
