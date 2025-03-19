@@ -33,11 +33,9 @@ Future<DateTime?> showCustomDatePicker(
       );
     },
   );
-  if (pickedDate != null) {
-    String formattedDate = DateFormat(dateFormat ?? 'EEE, M/d/y',
-            Languages.currentLanguage.locale.languageCode)
-        .format(pickedDate); // use your desired date format
-    controller.text = formattedDate;
-  }
+  String formattedDate = DateFormat(dateFormat ?? 'EEE, M/d/y',
+          Languages.currentLanguage.locale.languageCode)
+      .format(pickedDate!); // use your desired date format
+  controller.text = formattedDate;
   return pickedDate;
 }

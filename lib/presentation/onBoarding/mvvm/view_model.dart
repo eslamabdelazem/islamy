@@ -41,7 +41,7 @@ class OnBoardingViewModel extends ChangeNotifier {
       if (_currentPageIndex < onBoardingPages.length - 1) {
 
         await pageController.nextPage(
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
         );
       } else {

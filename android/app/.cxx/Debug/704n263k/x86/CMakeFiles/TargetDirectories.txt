@@ -1,0 +1,2 @@
+C:/Users/Israa/islami/islamy/android/app/.cxx/Debug/704n263k/x86/CMakeFiles/edit_cache.dir
+C:/Users/Israa/islami/islamy/android/app/.cxx/Debug/704n263k/x86/CMakeFiles/rebuild_cache.dir

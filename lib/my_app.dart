@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: RoutesGenerator.getRoute,
         initialRoute: Routes.splashRoute,
         debugShowCheckedModeBanner: false,
-        home: SplashView(),
+        home: const SplashView(),
       ),
     );
   }

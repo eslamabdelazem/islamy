@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islamy/presentation/Prayer_times/prayer_time.dart';
+import 'package:islamy/presentation/Settings/settings.dart';
 import 'config/language/languages.dart';
 import 'core/helpers/cache_service.dart';
 import 'my_app.dart';
@@ -26,7 +28,7 @@ void main() async {
       startLocale: const Locale('ar'),
       saveLocale: true,
       fallbackLocale: const Locale('ar'),
-      child: const MyApp(),
+      child:const SettingsScreen()
     ),
   );
 }
