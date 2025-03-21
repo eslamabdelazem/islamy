@@ -41,5 +41,6 @@ class PrayerCard extends StatelessWidget {
         ],
       ).paddingAll(14),
     );
+
   }
 }
