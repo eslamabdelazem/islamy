@@ -8,7 +8,7 @@ class ConstantManager {
   static final serviceLocator = GetIt.instance;
   static const String bundleId = "";
   static const String appName = "Trucky";
-  static const String fontFamily = "Tajawal";
+  static const String fontFamily = "Poppins";
   static const String token = "token";
   static const String projectName = "";
   static const int splashTimer = 4;

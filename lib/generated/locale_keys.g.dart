@@ -15,6 +15,7 @@ abstract class  LocaleKeys {
   static const search_result = 'search_result';
   static const search_location = 'search_location';
   static const cannot_detect_your_location = 'cannot_detect_your_location';
+  static const Prayer_Consumer = 'Prayer_Consumer';
   static const forbidden = 'forbidden';
   static const please_enter_your_location = 'please_enter_your_location';
   static const this_account_is_not_activated_the_activation_code_has_been_sent = 'this_account_is_not_activated_the_activation_code_has_been_sent';
