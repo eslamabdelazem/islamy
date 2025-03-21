@@ -5,6 +5,7 @@ import 'package:islamy/presentation/Prayer_times/prayer_time.dart';
 import 'package:islamy/presentation/Settings/settings.dart';
 import 'config/language/languages.dart';
 import 'core/helpers/cache_service.dart';
+import 'core/shared/service_locator.dart';
 import 'my_app.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -17,6 +18,7 @@ void main() async {
       ScreenUtil.ensureScreenSize()
     ],
   );
+  setUpServiceLocator();
   SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
   );

@@ -50,7 +50,7 @@ class DioService implements NetworkService {
 
   @override
   Future<BaseModel<Model>> callApi<Model>(NetworkRequest networkRequest,
-      {Model Function(dynamic json)? mapper}) async {
+      {Model Function(dynamic json)? mapper, String? secondKey}) async {
     try {
       log('path${networkRequest.path}');
 
@@ -73,7 +73,7 @@ class DioService implements NetworkService {
               headers: networkRequest.headers));
       log('response ${response.data.toString()}');
       if (mapper != null) {
-        return BaseModel.fromJson(response.data, jsonToModel: mapper);
+        return BaseModel.fromJson(response.data, jsonToModel: mapper, secondKey: secondKey);
       } else {
         return BaseModel.fromJson(response.data);
       }

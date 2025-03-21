@@ -5,6 +5,7 @@ abstract interface class NetworkService {
   Future<BaseModel<Model>> callApi<Model>(
     NetworkRequest networkRequest, {
     Model Function(dynamic json)? mapper,
+        String? secondKey
   });
 
   void setToken(String token);

@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:islamy/core/extensions/padding_extension.dart';
 import 'package:share_plus/share_plus.dart';
@@ -17,16 +16,6 @@ import 'check_permission/model.dart';
 enum AppBackgroundColors {white, mintGreen}
 
 class Helpers {
-
-  static bool isBlocProvided<T extends StateStreamableSource>(BuildContext context) {
-    try {
-      BlocProvider.of<T>(context, listen: false);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
 
   static Color setScaffoldBackgroundColor(AppBackgroundColors appBackgroundColor){
     late Color newBackgroundColor;

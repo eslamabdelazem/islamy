@@ -10,10 +10,13 @@ class BaseModel<T> {
   factory BaseModel.fromJson(
     Map<String, dynamic> json, {
     T Function(dynamic json)? jsonToModel,
+        String? secondKey
   }) {
     return BaseModel(
-      message: json['msg'] ?? '',
-      data: jsonToModel != null ? jsonToModel(json['data']) : json['data'],
+      message: json['status'] ?? '',
+      data: jsonToModel != null ?
+      secondKey != null? jsonToModel(json['data'][secondKey]) : jsonToModel(json['data']) :
+      json['data'],
     );
   }
 }

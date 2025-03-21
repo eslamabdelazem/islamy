@@ -12,7 +12,7 @@ class ConstantManager {
   static const String token = "token";
   static const String projectName = "";
   static const int splashTimer = 4;
-  static const String baseUrl = "https://trucky-sa.com/api/";
+  static const String baseUrl = "https://api.aladhan.com/v1/";
   static const String emptyText = "";
   static const int zero = 0;
   static const double zeroAsDouble = 0.0;
