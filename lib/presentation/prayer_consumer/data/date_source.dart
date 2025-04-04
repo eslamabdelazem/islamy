@@ -10,7 +10,7 @@ import '../../../core/network/network_request.dart';
 import 'models/get_prayers_request.dart';
 
 class PrayerConsumerDataSource{
-  Future<BaseModel<PrayerTiming>> getNewPrayersBasedChosenDate(GetPrayersBasedChosenDateRequest request)async{
+  Future<Result<BaseModel<PrayerTiming>, Failure>> getNewPrayersBasedChosenDate(GetPrayersBasedChosenDateRequest request)async{
     return await sl<NetworkService>().callApi<PrayerTiming>(
       NetworkRequest(
           path: ApiConstants.prayerTimesForSpecificDate+request.date.toString(),
@@ -19,6 +19,6 @@ class PrayerConsumerDataSource{
         ),
       secondKey: ApiResponseKeys.timings,
       mapper: (json) => PrayerTiming.fromJson(json),
-    );
+    ).handleCallbackWithFailure();
   }
 }

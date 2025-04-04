@@ -2,96 +2,62 @@ import 'package:flutter/material.dart';
 import 'package:islamy/core/widgets/custom_loading.dart';
 import 'package:islamy/core/widgets/exeption_view.dart';
 
+import '../../../generated/locale_keys.g.dart';
+
 enum ProviderStateBuilderLoadingStyle {defaultLoading, customLoading}
 class ProviderStateBuilder<T> extends StatelessWidget {
 
   final ProviderStateBuilderLoadingStyle style;
-  final AsyncSnapshot<T> snapshot;
-  final Widget Function(bool isLoading)? builderWithCustomLoading;
-  final Widget Function()? builder;
+  final Future<T> Function() asyncCall;
+  final Widget Function(bool isLoading, AsyncSnapshot snapshot)? builderWithCustomLoading;
+  final Widget Function(AsyncSnapshot snapshot)? builder;
 
   const ProviderStateBuilder({super.key,
-    required this.snapshot,
     required this.builderWithCustomLoading,
+    required this.asyncCall,
     required this.builder,
     required this.style,
   });
 
   const ProviderStateBuilder.customLoading({super.key,
-    required this.snapshot,
+    required this.asyncCall,
     required this.builderWithCustomLoading,
   }) : style = ProviderStateBuilderLoadingStyle.customLoading, builder = null;
 
   const ProviderStateBuilder.defaultLoading({super.key,
-    required this.snapshot,
+    required this.asyncCall,
     required this.builder,
   }) : builderWithCustomLoading = null, style = ProviderStateBuilderLoadingStyle.defaultLoading;
 
-  Widget _buildLoadingView(){
+  Widget _buildLoadingView(AsyncSnapshot snapshot){
     switch(style){
       case ProviderStateBuilderLoadingStyle.defaultLoading:
         return CustomLoading.showLoadingView();
 
       case ProviderStateBuilderLoadingStyle.customLoading:
-        return builderWithCustomLoading!(snapshot.connectionState == ConnectionState.waiting);
+        return builderWithCustomLoading!(snapshot.connectionState == ConnectionState.waiting, snapshot);
     }
   }
 
-  Widget _buildSuccessView(){
+  Widget _buildSuccessView(AsyncSnapshot snapshot){
     switch(style){
       case ProviderStateBuilderLoadingStyle.defaultLoading:
-        return builder!();
+        return builder!(snapshot);
 
       case ProviderStateBuilderLoadingStyle.customLoading:
-        return builderWithCustomLoading!(snapshot.connectionState == ConnectionState.waiting);
+        return builderWithCustomLoading!(snapshot.connectionState == ConnectionState.waiting, snapshot);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return snapshot.hasError || snapshot.connectionState == ConnectionState.none? const ExceptionView() :
-        snapshot.connectionState == ConnectionState.waiting? _buildLoadingView() : _buildSuccessView();
+    return FutureBuilder(
+      future: asyncCall(),
+      builder: (context, snapshot) =>
+          snapshot.connectionState == ConnectionState.none? const ExceptionView(errorMsg: LocaleKeys.intenet_weakness) :
+          snapshot.hasError? const ExceptionView(errorMsg: LocaleKeys.exception_error):
+            snapshot.connectionState == ConnectionState.waiting?
+            _buildLoadingView(snapshot) : _buildSuccessView(snapshot),
+    );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   if(snapshot.hasError){
-  //     return const ExceptionView();
-  //   }
-  //   else if(snapshot.hasData){
-  //     switch(style){
-  //       case ProviderStateBuilderLoadingStyle.defaultLoading:
-  //         return builder!();
-  //
-  //       case ProviderStateBuilderLoadingStyle.customLoading:
-  //         return builderWithCustomLoading!(snapshot.connectionState == ConnectionState.waiting);
-  //     }
-  //   } else {
-  //     switch(snapshot.connectionState){
-  //       case ConnectionState.none:
-  //         return const ExceptionView();
-  //
-  //       case ConnectionState.waiting:
-  //         switch(style){
-  //           case ProviderStateBuilderLoadingStyle.defaultLoading:
-  //             return CustomLoading.showLoadingView();
-  //
-  //           case ProviderStateBuilderLoadingStyle.customLoading:
-  //             return builderWithCustomLoading!(snapshot.connectionState == ConnectionState.waiting);
-  //         }
-  //
-  //       case ConnectionState.active:
-  //       case ConnectionState.done:
-  //         switch(style){
-  //           case ProviderStateBuilderLoadingStyle.defaultLoading:
-  //             return builder!();
-  //
-  //           case ProviderStateBuilderLoadingStyle.customLoading:
-  //             return builderWithCustomLoading!(snapshot.connectionState == ConnectionState.waiting);
-  //         }
-  //
-  //     }
-  //   }
-  //
-  // }
 }

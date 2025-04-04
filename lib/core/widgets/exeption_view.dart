@@ -7,7 +7,10 @@ import '../../generated/locale_keys.g.dart';
 import 'buttons/default_button.dart';
 
 class ExceptionView extends StatelessWidget {
-  const ExceptionView({super.key});
+  final String errorMsg;
+  const ExceptionView({super.key,
+      required this.errorMsg,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class ExceptionView extends StatelessWidget {
         Container(
           margin: EdgeInsets.symmetric(vertical: AppMargin.mH20),
           child: Center(
-            child: Text(LocaleKeys.exception_error.tr()),
+            child: Text(errorMsg),
           ),
         ),
         DefaultButton(

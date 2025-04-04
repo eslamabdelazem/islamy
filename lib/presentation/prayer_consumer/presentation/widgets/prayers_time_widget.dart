@@ -5,15 +5,25 @@ import 'package:islamy/core/extensions/padding_extension.dart';
 import 'package:islamy/core/widgets/app_text.dart';
 
 class PrayersTimeWidget extends StatelessWidget {
-  const PrayersTimeWidget({super.key});
-
+  PrayersTimeWidget({super.key,
+    required this.prayersTimes
+  });
+  final List<String> prayersTimes;
+  final List<String> prayers = [
+    'Fajr',
+    'Sunrise',
+    'Dhuhr',
+    'Asr',
+    'Maghreb',
+    'Isha',
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(
       spacing: 12.h,
       children: List.generate(
-        5,
-            (index) => PrayerCard(prayerName: 'test', prayerTime: '11/3/2024'),
+        prayers.length,
+            (index) => PrayerCard(prayerName: prayers[index], prayerTime: prayersTimes[index]),
       ),
     );
   }
