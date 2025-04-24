@@ -1,9 +1,9 @@
-import 'dart:convert';
 import 'package:adhan/adhan.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:islamy/core/extensions/context_extension.dart';
 import 'package:islamy/core/extensions/padding_extension.dart';
 import 'package:islamy/core/helpers/helpers.dart';
 import 'package:islamy/core/helpers/location.dart';
@@ -13,8 +13,8 @@ import 'package:islamy/core/widgets/custom_loading.dart';
 import 'package:islamy/generated/assets.dart';
 import 'package:islamy/generated/locale_keys.g.dart';
 import 'package:islamy/presentation/home/presentation/componants/home_category.dart';
+import 'package:islamy/presentation/remembrances/presentation/screens/choose_remembrances_type.dart';
 import '../../../../../config/res/constants_manager.dart';
-import '../../../../../core/helpers/cache_service.dart';
 import '../../../../../core/shared/models/location.dart';
 import '../../componants/prayer.dart';
 import '../../resources/color_manager.dart';
@@ -31,25 +31,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   bool isLoading = false;
-  LocationModel? location;
   PrayerTimes? prayerTimes;
+
+  LocationModel? location;
+
   Future<void> getLocation()async{
     setState(() => isLoading = true);
-    await handleGetLocation();
+    location = await Helpers.handleGetLocation();
     getHomePrayerTimes();
     setState(() => isLoading = false);
   }
-
-  Future<void> handleGetLocation()async{
-    try{
-      final Map<String, dynamic> locationJson = jsonDecode(await CacheStorage.read(CacheConstants.lastLocation));
-      LocationModel? locationModel = LocationModel.fromJson(locationJson);
-      location = locationModel;
-    }catch(e){
-      return;
-    }
-  }
-  
   String _formatDateToHoursAndMinutes(DateTime date){
     return DateFormat.Hm().format(date);
   }
@@ -74,11 +65,30 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  String _getPrayerTime(Prayer prayer){
+    switch(prayer){
+      case Prayer.fajr:
+        return _formatDateToHoursAndMinutes(prayerTimes!.fajr);
+      case Prayer.dhuhr:
+        return _formatDateToHoursAndMinutes(prayerTimes!.dhuhr);
+      case Prayer.asr:
+        return _formatDateToHoursAndMinutes(prayerTimes!.asr);
+      case Prayer.maghrib:
+        return _formatDateToHoursAndMinutes(prayerTimes!.maghrib);
+      case Prayer.isha:
+        return _formatDateToHoursAndMinutes(prayerTimes!.isha);
+      default:
+        return '';
+    }
+  }
+
+
   @override
   void initState() {
     getLocation();
     super.initState();
   }
+
   final List<String> categories = [
     LocaleKeys.Remembrances,
     LocaleKeys.prayer_times,
@@ -174,44 +184,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     prayerName: 'الظهر',
                     time: _formatDateToHoursAndMinutes(prayerTimes!.dhuhr),
                   ),
-                  // Container(
-                  //   height: 71.h,
-                  //   decoration: BoxDecoration(
-                  //     color: ColorManager.prayerselection,
-                  //     borderRadius: BorderRadius.circular(4),
-                  //   ),
-                  //   child: Padding(
-                  //     padding: const EdgeInsets.symmetric(
-                  //         horizontal: 8.0, vertical: 7.0),
-                  //     child: Column(
-                  //       mainAxisSize: MainAxisSize.min,
-                  //       crossAxisAlignment: CrossAxisAlignment.center,
-                  //       children: [
-                  //         Image.asset(
-                  //           Assets.imagesThohur,
-                  //           height: 24.h,
-                  //           width: 24.w,
-                  //           color: ColorManager.white,
-                  //         ),
-                  //         Text(
-                  //           'الظهر',
-                  //           // style: TextStyles.prayerColor14Light.copyWith(
-                  //           //   fontWeight: FontWeight.w600,
-                  //           //   color: ColorManager.white,
-                  //           // ),
-                  //         ),
-                  //         Text(
-                  //           '12:30',
-                  //           // style: TextStyles.prayerColor14Light.copyWith(
-                  //           //   fontWeight: FontWeight.w600,
-                  //           //   fontSize: 9,
-                  //           //   color: ColorManager.white,
-                  //           // ),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                   PrayerItem(
                     icon: Assets.imagesShorouk,
                     prayerName: 'الشروق',
@@ -244,6 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
@@ -254,36 +227,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
+                        AppText(
                           prayerTimes!.currentPrayer().name,
-                          // style: TextStyles.prayerColor14Light.copyWith(
-                          //   color: ColorManager.prayerMain,
-                          //   fontWeight: FontWeight.w600,
-                          //   fontSize: 16,
-                          // ),
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
                         ),
-                        Text(
-                          '12:30',
-                          // style: TextStyles.prayerColor14Light.copyWith(
-                          //   color: ColorManager.prayerMain,
-                          //   fontWeight: FontWeight.w600,
-                          //   fontSize: 36,
-                          // ),
+                        AppText(
+                          _getPrayerTime(prayerTimes!.currentPrayer()),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.sp,
                         ),
-                        Text(
+                        AppText(
                           'الصلاة القادمة: ${prayerTimes!.nextPrayer().name}',
-                          // style: TextStyles.prayerColor14Light.copyWith(
-                          //   color: ColorManager.prayerMain,
-                          //   fontWeight: FontWeight.w500,
-                          // ),
+                          fontWeight: FontWeight.w500,
                         ),
-                        Text(
-                          '3:30 مساءً',
-                          // style: TextStyles.prayerColor14Light.copyWith(
-                          //   color: ColorManager.prayerMain,
-                          //   fontWeight: FontWeight.w600,
-                          //   fontSize: 14,
-                          // ),
+                        AppText(
+                          _getPrayerTime(prayerTimes!.nextPrayer()),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14.sp,
                         ),
                       ],
                     ),
@@ -292,31 +253,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     right: 0,
                     bottom: 0,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomRight: Radius.circular(17),
                       ),
-                      child: Container(
-                        width: 218.w,
+                      child: SizedBox(
+                        width: context.width/2,
                         height: 137.h,
-                        child: Stack(
-                          alignment: Alignment.bottomRight,
-                          children: [
-                            // Positioned(
-                            //   right: -16.w,
-                            //   bottom: 3.h,
-                            //   child: Image.asset(
-                            //     ImageManager.masjid_png,
-                            //     color: ColorManager.gray,
-                            //     width: 211.w,
-                            //     height: 129.h,
-                            //   ),
-                            // ),
-                            // Image.asset(
-                            //   ImageManager.masjid_png,
-                            //   width: 218.w,
-                            //   height: 137.h,
-                            // ),
-                          ],
+                        child: Image.asset(
+                          Assets.imagesMasjid,
+                          width: 218.w,
+                          height: 137.h,
                         ),
                       ),
                     ),
@@ -348,7 +294,17 @@ class _HomeScreenState extends State<HomeScreen> {
             child: GridView.builder(
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 8.w),
-              itemBuilder: (context, index) => HomeCategory(icon: Assets.iconsTimeclock, text: categories[index].tr()),
+              itemBuilder: (context, index) => InkWell(
+                  onTap: () {
+                    switch(index){
+                      case 0:
+                        Go.to(const ChooseRemembrancesType());
+                        
+                      case 1:
+                        key.currentState!.changeScreen(1);
+                    }
+                  },
+                  child: HomeCategory(icon: Assets.iconsTimeclock, text: categories[index].tr())),
               itemCount: categories.length,
             ),
           )

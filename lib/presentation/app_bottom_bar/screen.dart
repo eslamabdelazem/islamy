@@ -12,10 +12,10 @@ class AppBottomBar extends StatefulWidget {
   const AppBottomBar({super.key});
 
   @override
-  State<AppBottomBar> createState() => _AppBottomBarState();
+  State<AppBottomBar> createState() => AppBottomBarState();
 }
 
-class _AppBottomBarState extends State<AppBottomBar> {
+class AppBottomBarState extends State<AppBottomBar> {
   final List<Widget> screens = const [
     HomeScreen(),
     PrayerConsumer(),

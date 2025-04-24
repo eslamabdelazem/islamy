@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../presentation/app_bottom_bar/screen.dart';
+
 final GetIt sl = GetIt.instance;
+GlobalKey<AppBottomBarState> key = GlobalKey<AppBottomBarState>();
 
 class ConstantManager {
   static final serviceLocator = GetIt.instance;

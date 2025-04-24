@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         navigatorKey: Go.navigatorKey,
         debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
+        home: AppBottomBar(key: key),
         builder: (context, child) {
           return OfflineWidget(
             child: FullScreenLoadingManager(child: child!),

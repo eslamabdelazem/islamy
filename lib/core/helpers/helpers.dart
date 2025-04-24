@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:adhan/adhan.dart';
@@ -12,10 +13,13 @@ import 'package:share_plus/share_plus.dart';
 import '../../config/res/app_sizes.dart';
 import '../../config/res/color_manager.dart';
 import 'package:permission_handler/permission_handler.dart';
+import '../../config/res/constants_manager.dart';
 import '../../generated/locale_keys.g.dart';
 import '../navifation/go.dart';
+import '../shared/models/location.dart';
 import '../widgets/custom_loading.dart';
 import '../widgets/custom_messages.dart';
+import 'cache_service.dart';
 import 'check_permission/model.dart';
 import 'package:workmanager/workmanager.dart';
 
@@ -61,6 +65,15 @@ class Helpers {
   }
 
 
+  static Future<LocationModel?> handleGetLocation()async{
+    try{
+      final Map<String, dynamic> locationJson = jsonDecode(await CacheStorage.read(CacheConstants.lastLocation));
+      LocationModel? locationModel = LocationModel.fromJson(locationJson);
+      return locationModel;
+    }catch(e){
+      return null;
+    }
+  }
 
   static Color setScaffoldBackgroundColor(AppBackgroundColors appBackgroundColor){
     late Color newBackgroundColor;
