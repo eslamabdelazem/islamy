@@ -16,7 +16,6 @@ class TimingProvider extends ChangeNotifier{
   PrayerTiming? prayerTiming;
   Future<void> getPrayersTiming(GetPrayersBasedChosenDateRequest request)async{
     status = BaseStatus.loading;
-
     final result = await dataSource.getNewPrayersBasedChosenDate(request);
     result.when(
           (success) {
