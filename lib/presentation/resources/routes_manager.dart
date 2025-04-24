@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamy/presentation/home/home.dart';
+import 'package:islamy/presentation/home/presentation/screens/home_screen/home.dart';
 import 'package:islamy/presentation/resources/strings_manager.dart';
 import 'package:provider/provider.dart';
 import '../onBoarding/mvvm/view.dart';
@@ -24,7 +24,7 @@ class RoutesGenerator {
           ),
         );
       case Routes.home:
-        return MaterialPageRoute(builder: (_) =>  const Home());
+        return MaterialPageRoute(builder: (_) =>  const HomeScreen());
       default:
         return unDefinedRoute();
     }

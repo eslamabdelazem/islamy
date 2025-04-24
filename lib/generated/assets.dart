@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String assetsImagesMasjid = 'assets/images/masjid-.svg';
   static const String audioAzan20 = 'assets/audio/azan20.mp3';
   static const String bodyAzkar = 'assets/icons/home/body/azkar.png';
   static const String bodyDo3aa = 'assets/icons/home/body/do3aa.png';
@@ -14,14 +15,31 @@ class Assets {
   static const String bodyVector = 'assets/icons/home/body/Vector.png';
   static const String fontsPacificoRegular = 'assets/fonts/Pacifico-Regular.ttf';
   static const String iconsTimeclock = 'assets/icons/timeclock.png';
+  static const String imagesAsr = 'assets/images/asr.png';
+  static const String imagesAzkarSalahIcon = 'assets/images/azkar_salah_icon.png';
+  static const String imagesCalendar = 'assets/images/calendar.png';
   static const String imagesClock = 'assets/images/clock.png';
+  static const String imagesFagr = 'assets/images/fagr.png';
+  static const String imagesHelal = 'assets/images/helal.png';
+  static const String imagesHomepageIcon = 'assets/images/homepage_icon.png';
+  static const String imagesIconSettingsLinear = 'assets/images/icon-settings-linear.png';
+  static const String imagesIconTimeLine = 'assets/images/icon-time-line.png';
+  static const String imagesIsha = 'assets/images/isha.png';
+  static const String imagesMaghrib = 'assets/images/maghrib.png';
   static const String imagesMasjid = 'assets/images/masjid.png';
   static const String imagesMasjidbackground = 'assets/images/masjidbackground.png';
+  static const String imagesNextButtton = 'assets/images/next_buttton.png';
+  static const String imagesOnboarding1 = 'assets/images/onboarding1.png';
+  static const String imagesOnboarding2 = 'assets/images/onboarding2.png';
+  static const String imagesOnboarding3 = 'assets/images/onboarding3.jpeg';
   static const String imagesOnboardingLogo1 = 'assets/images/onboarding_logo1.png';
   static const String imagesOnboardingLogo2 = 'assets/images/onboarding_logo2.png';
   static const String imagesOnboardingLogo3 = 'assets/images/onboarding_logo3.png';
   static const String imagesRemembrancesSeparator = 'assets/images/remembrances_separator.png';
+  static const String imagesShorouk = 'assets/images/shorouk.png';
   static const String imagesSplashLogo = 'assets/images/splash_logo.png';
+  static const String imagesSun = 'assets/images/sun.png';
+  static const String imagesThohur = 'assets/images/thohur.png';
   static const String lottieApiError = 'assets/lottie/api_error.json';
   static const String lottieDone = 'assets/lottie/done.json';
   static const String lottieEmptyBox = 'assets/lottie/empty_box.json';

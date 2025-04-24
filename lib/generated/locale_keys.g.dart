@@ -16,6 +16,8 @@ abstract class  LocaleKeys {
   static const search_location = 'search_location';
   static const cannot_detect_your_location = 'cannot_detect_your_location';
   static const Prayer_Consumer = 'Prayer_Consumer';
+  static const prayer_times = 'prayer_times';
+  static const Location = 'Location';
   static const Hijiri = 'Hijiri';
   static const Gregorian = 'Gregorian';
   static const Remembrances = 'Remembrances';

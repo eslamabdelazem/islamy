@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islamy/core/helpers/loading_manager.dart';
 import 'package:islamy/core/widgets/offline_widget.dart';
+import 'package:islamy/presentation/app_bottom_bar/screen.dart';
+import 'package:islamy/presentation/home/presentation/screens/home_screen/home.dart';
 import 'package:islamy/presentation/prayer_consumer/presentation/screens/main.dart';
 import 'package:islamy/presentation/remembrances/presentation/screens/choose_remembrances_type.dart';
 import 'config/res/constants_manager.dart';
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         navigatorKey: Go.navigatorKey,
         debugShowCheckedModeBanner: false,
-        home: const ChooseRemembrancesType(),
+        home: HomeScreen(),
         builder: (context, child) {
           return OfflineWidget(
             child: FullScreenLoadingManager(child: child!),

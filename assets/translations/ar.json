@@ -12,6 +12,8 @@
   "search_location": "البحث عن عنوان",
   "cannot_detect_your_location": "لا يمكن تحديد موقعك الان حاول لاحقا",
   "Prayer_Consumer": "متتبع الصلوات",
+  "prayer_times" : "مواقيت الصلاة",
+  "Location" : "الموقع الحالي",
   "Hijiri" : "هجري",
   "Gregorian" : "ميلادي",
   "Remembrances" : "الاذكار",

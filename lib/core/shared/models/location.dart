@@ -1,4 +1,6 @@
 class LocationModel{
+  num? lat;
+  num? lng;
   String? countryName;
   String? street;
   String? isoCountryCode;
@@ -11,6 +13,8 @@ class LocationModel{
   String? subThoroughfare;
 
   LocationModel({
+    this.lng,
+    this.lat,
     this.countryName,
     this.street,
     this.isoCountryCode,
@@ -39,6 +43,8 @@ class LocationModel{
   }
 
   Map<String, dynamic> toJson() => {
+    'lat' : lat,
+    'lng' : lng,
     'name': countryName,
     'street': street,
     'isoCountryCode': isoCountryCode,

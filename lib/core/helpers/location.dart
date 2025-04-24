@@ -122,7 +122,9 @@ class _LocationBodyState extends State<_LocationBodyWithNamed> {
         currentLatLng.latitude,
         currentLatLng.longitude
     );
+    locations[0].toJson().addAll({'lat' : currentLatLng.latitude, 'lng' : currentLatLng.longitude});
     locationModel = LocationModel.fromJson(locations[0].toJson());
+    log('the full model ${locationModel?.toJson()}');
     log('street : ${locationModel?.street.toString()}');
   }
 

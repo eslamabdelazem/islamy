@@ -52,7 +52,7 @@ class Helpers {
     );
   }
 
-  PrayerTimes calcPrayerTimesBasedAdhan(LatLng latLng) {
+  static PrayerTimes calcPrayerTimesBasedAdhan(LatLng latLng) {
     final coordinates = Coordinates(latLng.latitude, latLng.longitude);
     final params = CalculationMethod.egyptian.getParameters();
     params.madhab = Madhab.shafi;
