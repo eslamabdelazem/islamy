@@ -45,11 +45,10 @@ class Helpers {
 
   static Future<void> registerPrayers({required int id, required String prayerName})async{
 
-    Workmanager().registerOneOffTask(
+    Workmanager().registerPeriodicTask(
       id.toString(),
       prayerName,
-      // frequency: const Duration(seconds: 20),
-      // frequency: const Duration(hours: 24),
+      frequency: const Duration(hours: 24),
     );
   }
 
