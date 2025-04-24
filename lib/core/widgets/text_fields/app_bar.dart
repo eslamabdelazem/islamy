@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islamy/config/res/color_manager.dart';
 import 'package:islamy/core/widgets/app_text.dart';
 
-class CustomAppBar extends StatelessWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
 
   final String title;
   const CustomAppBar({super.key,
@@ -24,4 +24,7 @@ class CustomAppBar extends StatelessWidget {
         )
     );
   }
+
+  @override
+  Size get preferredSize => const Size(double.infinity, kToolbarHeight);
 }

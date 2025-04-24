@@ -13,12 +13,11 @@ class PrayerConsumerDataSource{
   Future<Result<BaseModel<PrayerTiming>, Failure>> getNewPrayersBasedChosenDate(GetPrayersBasedChosenDateRequest request)async{
     return await sl<NetworkService>().callApi<PrayerTiming>(
       NetworkRequest(
-          path: ApiConstants.prayerTimesForSpecificDate+request.date.toString(),
+          path: ConstantManager.baseUrl+ApiConstants.prayerTimesForSpecificDate+request.date.toString(),
           method: RequestMethod.get,
           queryParameters: request.toJson()
         ),
-      secondKey: ApiResponseKeys.timings,
-      mapper: (json) => PrayerTiming.fromJson(json),
+      mapper: (json) => PrayerTiming.fromJson(json['data'][ApiResponseKeys.timings]),
     ).handleCallbackWithFailure();
   }
 }

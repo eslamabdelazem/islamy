@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/core/widgets/custom_loading.dart';
 import 'package:islamy/core/widgets/exeption_view.dart';
-
-import '../../../generated/locale_keys.g.dart';
-
 enum ProviderStateBuilderLoadingStyle {defaultLoading, customLoading}
 class ProviderStateBuilder<T> extends StatelessWidget {
 
@@ -54,8 +51,8 @@ class ProviderStateBuilder<T> extends StatelessWidget {
     return FutureBuilder(
       future: asyncCall(),
       builder: (context, snapshot) =>
-          snapshot.connectionState == ConnectionState.none? const ExceptionView(errorMsg: LocaleKeys.intenet_weakness) :
-          snapshot.hasError? const ExceptionView(errorMsg: LocaleKeys.exception_error):
+          snapshot.connectionState == ConnectionState.none? const ExceptionView() :
+          snapshot.hasError? const ExceptionView():
             snapshot.connectionState == ConnectionState.waiting?
             _buildLoadingView(snapshot) : _buildSuccessView(snapshot),
     );

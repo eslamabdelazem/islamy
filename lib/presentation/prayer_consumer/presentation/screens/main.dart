@@ -19,10 +19,8 @@ class PrayerConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: CustomAppBar(title: LocaleKeys.Prayer_Consumer.tr()),
-      ),
-      body: ChangeNotifierProvider(
+      appBar: CustomAppBar(title: LocaleKeys.Prayer_Consumer.tr()),
+        body: ChangeNotifierProvider(
           create: (context) => TimingProvider(),
           child: const _PrayerConsumerBody()
       )

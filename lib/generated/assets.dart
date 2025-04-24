@@ -19,6 +19,7 @@ class Assets {
   static const String imagesOnboardingLogo1 = 'assets/images/onboarding_logo1.png';
   static const String imagesOnboardingLogo2 = 'assets/images/onboarding_logo2.png';
   static const String imagesOnboardingLogo3 = 'assets/images/onboarding_logo3.png';
+  static const String imagesRemembrancesSeparator = 'assets/images/remembrances_separator.png';
   static const String imagesSplashLogo = 'assets/images/splash_logo.png';
   static const String lottieApiError = 'assets/lottie/api_error.json';
   static const String lottieDone = 'assets/lottie/done.json';

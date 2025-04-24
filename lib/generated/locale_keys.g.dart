@@ -18,6 +18,7 @@ abstract class  LocaleKeys {
   static const Prayer_Consumer = 'Prayer_Consumer';
   static const Hijiri = 'Hijiri';
   static const Gregorian = 'Gregorian';
+  static const Remembrances = 'Remembrances';
   static const forbidden = 'forbidden';
   static const please_enter_your_location = 'please_enter_your_location';
   static const this_account_is_not_activated_the_activation_code_has_been_sent = 'this_account_is_not_activated_the_activation_code_has_been_sent';

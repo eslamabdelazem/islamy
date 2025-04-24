@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/config/language/languages.dart';
 import 'package:islamy/config/res/color_manager.dart';
-import 'package:islamy/core/widgets/app_text.dart';
-import 'package:islamy/generated/locale_keys.g.dart';
 import 'package:jhijri/_src/_jHijri.dart';
 import 'package:jhijri_picker/_src/_jWidgets.dart';
 

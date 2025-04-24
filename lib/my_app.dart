@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:islamy/core/helpers/loading_manager.dart';
 import 'package:islamy/core/widgets/offline_widget.dart';
 import 'package:islamy/presentation/prayer_consumer/presentation/screens/main.dart';
+import 'package:islamy/presentation/remembrances/presentation/screens/choose_remembrances_type.dart';
 import 'config/res/constants_manager.dart';
 import 'core/navifation/go.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         navigatorKey: Go.navigatorKey,
         debugShowCheckedModeBanner: false,
-        home: const PrayerConsumer(),
+        home: const ChooseRemembrancesType(),
         builder: (context, child) {
           return OfflineWidget(
             child: FullScreenLoadingManager(child: child!),

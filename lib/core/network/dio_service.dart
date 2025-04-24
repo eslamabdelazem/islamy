@@ -21,7 +21,6 @@ class DioService implements NetworkService {
 
   void _initDio() {
     _dio = Dio()
-      ..options.baseUrl = ConstantManager.baseUrl
       ..options.connectTimeout = const Duration(
         seconds: ConstantManager.connectTimeoutDuration,
       )
@@ -73,7 +72,7 @@ class DioService implements NetworkService {
               headers: networkRequest.headers));
       log('response ${response.data.toString()}');
       if (mapper != null) {
-        return BaseModel.fromJson(response.data, jsonToModel: mapper, secondKey: secondKey);
+        return BaseModel.fromJson(response.data, jsonToModel: mapper);
       } else {
         return BaseModel.fromJson(response.data);
       }
