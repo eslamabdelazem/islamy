@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String audioAzan20 = 'assets/audio/azan20.mp3';
   static const String bodyAzkar = 'assets/icons/home/body/azkar.png';
   static const String bodyDo3aa = 'assets/icons/home/body/do3aa.png';
   static const String bodyFavourite = 'assets/icons/home/body/favourite.png';
