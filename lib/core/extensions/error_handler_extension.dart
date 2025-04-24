@@ -30,3 +30,13 @@ extension ErrorHandler<T extends dynamic> on Future<T> {
     }
   }
 }
+
+// extension LoadingManager<T> on Future<T>{
+//   static bool isLoading = false;
+//   Future<T> manageLoading()async{
+//     isLoading = true;
+//     final result =  await this;
+//     isLoading = false;
+//     return result;
+//   }
+// }

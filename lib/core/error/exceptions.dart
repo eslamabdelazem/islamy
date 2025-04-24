@@ -2,6 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:islamy/config/language/locale_keys.g.dart';
 
+import '../../generated/locale_keys.g.dart';
+
+
 class ServerException extends Equatable implements Exception {
   final String message;
 
@@ -37,13 +40,13 @@ class ConflictException extends ServerException {
 }
 
 class InternalServerErrorException extends ServerException {
-  InternalServerErrorException([message])
-      : super(message ?? LocaleKeys.checkInternet);
+  const InternalServerErrorException([message])
+      : super(message ?? LocaleKeys.check_internet);
 }
 
 class NoInternetConnectionException extends ServerException {
   NoInternetConnectionException([message])
-      : super(message ?? LocaleKeys.checkInternet.tr());
+      : super(message ?? LocaleKeys.check_internet.tr());
 }
 
 class CacheException implements Exception {}

@@ -1,12 +1,14 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../config/language/locale_keys.g.dart';
+import '../../generated/locale_keys.g.dart';
+
 import '../../config/res/assets.gen.dart';
 import '../../config/res/color_manager.dart';
 import '../navifation/go.dart';
@@ -88,7 +90,7 @@ class ImageHelper {
           ),
           CupertinoActionSheetAction(
             child: AppText(
-              LocaleKeys.photoLibrary,
+              LocaleKeys.photo_library.tr(),
               color: Colors.black,
             ),
             onPressed: () async {
@@ -144,7 +146,7 @@ class ImageHelper {
               width: 22.w,
             ),
             visualDensity: VisualDensity.compact,
-            title: Text(LocaleKeys.photoLibrary),
+            title: Text(LocaleKeys.photo_library.tr()),
           ),
         ),
       ],

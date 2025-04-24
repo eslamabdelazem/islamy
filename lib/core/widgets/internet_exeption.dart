@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islamy/core/extensions/context_extension.dart';
 import '../../config/language/locale_keys.g.dart';
 import '../../config/res/app_sizes.dart';
 import '../../config/res/assets.gen.dart';
 import '../../config/res/color_manager.dart';
+import '../../generated/locale_keys.g.dart';
 
 class InternetExpetion extends StatelessWidget {
   const InternetExpetion({super.key});
@@ -23,14 +25,14 @@ class InternetExpetion extends StatelessWidget {
             ),
             SizedBox(height: AppSize.sH10),
             Text(
-              LocaleKeys.errorExeptionNoconnection,
+              LocaleKeys.error_exeption_noconnection.tr(),
               style: context.textTheme.titleLarge!.copyWith(
                 color: AppColors.secondary,
               ),
             ),
             SizedBox(height: AppSize.sH10),
             Text(
-              LocaleKeys.errorexeptionNointernetdesc,
+              LocaleKeys.errorexception_notcontaindesc.tr(),
               style: context.textTheme.titleLarge!.copyWith(),
               textAlign: TextAlign.center,
             ),

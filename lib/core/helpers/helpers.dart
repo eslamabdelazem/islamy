@@ -1,31 +1,65 @@
+import 'dart:developer';
 import 'dart:io';
+import 'package:adhan/adhan.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:islamy/core/extensions/padding_extension.dart';
+import 'package:islamy/generated/assets.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../config/language/locale_keys.g.dart';
 import '../../config/res/app_sizes.dart';
 import '../../config/res/color_manager.dart';
 import 'package:permission_handler/permission_handler.dart';
+import '../../generated/locale_keys.g.dart';
 import '../navifation/go.dart';
 import '../widgets/custom_loading.dart';
 import '../widgets/custom_messages.dart';
 import 'check_permission/model.dart';
+import 'package:workmanager/workmanager.dart';
 
 enum AppBackgroundColors {white, mintGreen}
 
+@pragma('vm:entry-point')
+void callbackDispatcher() {
+  Workmanager().executeTask((task, inputData) {
+    log('the task is works $task');
+    // Helpers.playAzanAudio();
+    return Future.value(true);
+  });
+}
+
 class Helpers {
 
-  static bool isBlocProvided<T extends StateStreamableSource>(BuildContext context) {
-    try {
-      BlocProvider.of<T>(context, listen: false);
-      return true;
-    } catch (e) {
-      return false;
-    }
+  static Future<void> initWorkManager()async{
+    await Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
   }
+
+  static Future<void> playAzanAudio()async{
+    final player = AudioPlayer();
+    await player.setAsset(Assets.audioAzan20);
+    await player.play();
+  }
+
+
+  static Future<void> registerPrayers({required int id, required String prayerName})async{
+
+    Workmanager().registerPeriodicTask(
+      id.toString(),
+      prayerName,
+      frequency: const Duration(hours: 24),
+    );
+  }
+
+  PrayerTimes calcPrayerTimesBasedAdhan(LatLng latLng) {
+    final coordinates = Coordinates(latLng.latitude, latLng.longitude);
+    final params = CalculationMethod.egyptian.getParameters();
+    params.madhab = Madhab.shafi;
+    final prayerTimes = PrayerTimes.today(coordinates, params);
+    return prayerTimes;
+  }
+
 
 
   static Color setScaffoldBackgroundColor(AppBackgroundColors appBackgroundColor){
@@ -126,7 +160,7 @@ class Helpers {
               children: <Widget>[
                 ListTile(
                   leading: const Icon(Icons.photo_library),
-                  title: Text(LocaleKeys.photoLibrary),
+                  title: Text(LocaleKeys.photo_library.tr()),
                   onTap: () async {
                     final currentImage =
                         await picker.pickImage(source: ImageSource.gallery);
@@ -138,7 +172,7 @@ class Helpers {
                 ),
                 ListTile(
                   leading: const Icon(Icons.photo_camera),
-                  title: Text(LocaleKeys.camera),
+                  title: Text(LocaleKeys.camera.tr()),
                   onTap: () async {
                     final currentImage =
                         await picker.pickImage(source: ImageSource.camera);
