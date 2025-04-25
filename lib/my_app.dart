@@ -6,6 +6,7 @@ import 'package:islamy/presentation/app_bottom_bar/screen.dart';
 import 'package:islamy/presentation/home/presentation/screens/home_screen/home.dart';
 import 'package:islamy/presentation/prayer_consumer/presentation/screens/main.dart';
 import 'package:islamy/presentation/remembrances/presentation/screens/choose_remembrances_type.dart';
+import 'package:islamy/presentation/splash/splash_view.dart';
 import 'config/res/constants_manager.dart';
 import 'core/navifation/go.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         navigatorKey: Go.navigatorKey,
         debugShowCheckedModeBanner: false,
-        home: AppBottomBar(key: key),
+        home: const SplashView(),
         builder: (context, child) {
           return OfflineWidget(
             child: FullScreenLoadingManager(child: child!),
