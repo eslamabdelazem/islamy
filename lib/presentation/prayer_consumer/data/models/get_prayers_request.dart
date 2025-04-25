@@ -1,20 +1,20 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 class GetPrayersBasedChosenDateRequest {
 
   String date;
-  String lat;
-  String lng;
+  LatLng latLng;
   int method;
 
   GetPrayersBasedChosenDateRequest({
-    required this.lat,
-    required this.lng,
+    required this.latLng,
     this.method = 5,
     required this.date,
   });
 
   Map<String, dynamic> toJson() => {
-    'latitude': lat,
-    'longitude': lng,
+    'latitude': latLng.latitude,
+    'longitude': latLng.longitude,
     'method': method,
   };
 }

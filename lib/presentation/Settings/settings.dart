@@ -18,14 +18,16 @@ class SettingsScreen extends StatefulWidget {
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
-LocationModel? location;
-Future<void> getLocation()async{
-  location = await Helpers.handleGetLocation();
-}
-
 class _SettingsScreenState extends State<SettingsScreen> {
+
+  LocationModel? location;
+  Future<void> getLocation()async{
+    location = await Helpers.handleGetLocation();
+  }
+
   bool isEnglish = false;
   final _controller = ValueNotifier<bool>(false);
+
   @override
   void initState() {
     super.initState();
@@ -111,7 +113,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 20,bottom: 20),
               child: InkWell(
-                onTap: () => Go.to(const LocationScreenWithNamed.detectCurrentUserLocation(method: NavigationMethod.pop)),
+                onTap: () async{
+                  final result = await Go.to(
+                      const LocationScreenWithNamed.detectCurrentUserLocation(method: NavigationMethod.pop)
+                  );
+                  if(result == 'locationChanged'){
+                    getLocation();
+                  }
+                },
                 child: Container( color: Colors.grey.withOpacity(0.1),height: 50,
                   child: ListTile(
                     leading: const Text('تحديث الموقع',style: TextStyle(fontSize: 16)),

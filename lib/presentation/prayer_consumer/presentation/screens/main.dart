@@ -10,7 +10,6 @@ import 'package:islamy/presentation/prayer_consumer/presentation/provider/provid
 import 'package:islamy/presentation/prayer_consumer/presentation/widgets/date_widget.dart';
 import 'package:islamy/presentation/prayer_consumer/presentation/widgets/select_date_type.dart';
 import 'package:provider/provider.dart';
-import '../../data/models/get_prayers_request.dart';
 import '../widgets/prayers_time_widget.dart';
 
 class PrayerConsumer extends StatelessWidget {
@@ -41,12 +40,7 @@ class _PrayerConsumerBodyState extends State<_PrayerConsumerBody> {
 
   Future<void> _getPrayers(DateTime dateTime)async{
     String date = DateFormat('dd-MM-yyyy').format(dateTime);
-    await context.read<TimingProvider>().getPrayersTiming(
-        GetPrayersBasedChosenDateRequest(
-            lng: 31.toString(),
-            lat: 31.toString(),
-            date: date
-        ));
+    await context.read<TimingProvider>().getPrayersTiming(date);
   }
 
   @override
