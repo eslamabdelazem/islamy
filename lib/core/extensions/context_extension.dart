@@ -31,7 +31,7 @@ extension ContextExtension on BuildContext {
 }
 
 extension LanguageExtension on Widget {
-  Widget overRideLocaization(
+  Widget overRideLocalization(
       {required BuildContext context, required Languages lang}) {
     return Localizations.override(
       context: context,

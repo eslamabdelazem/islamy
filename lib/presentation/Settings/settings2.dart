@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
+import 'package:islamy/generated/assets.dart';
 import 'package:islamy/presentation/Settings/settings.dart';
 
 import '../resources/color_manager.dart';
@@ -86,7 +87,7 @@ class PrayerTimeTile extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _PrayerTimeTileState createState() => _PrayerTimeTileState();
+  State<PrayerTimeTile> createState() => _PrayerTimeTileState();
 }
 
 class _PrayerTimeTileState extends State<PrayerTimeTile> {
@@ -120,12 +121,12 @@ class _PrayerTimeTileState extends State<PrayerTimeTile> {
                   color: _controller.value? ColorManager.blueTeal:ColorManager.greyA1,
                 ),
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
 
               Image.asset(
                 _controller.value
-                    ? 'assets/icons/home/status_bar/volume.png'
-                    : 'assets/icons/home/status_bar/muted.png',
+                    ? Assets.iconsVolume
+                    : Assets.iconsMuted,
                 width: 25,
               ),
 

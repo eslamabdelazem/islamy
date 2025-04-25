@@ -8,6 +8,7 @@ import 'package:islamy/generated/locale_keys.g.dart';
 import 'package:islamy/presentation/Settings/settings2.dart';
 import 'package:islamy/presentation/resources/color_manager.dart';
 
+import '../../config/language/languages.dart';
 import '../../core/shared/models/location.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -38,6 +39,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
         }
       });
     });
+  }
+
+  Future<void> changeLang(bool isEnglish)async{
+    if(isEnglish){
+      await Helpers.changeAppLang(context, newLang: Languages.english.locale);
+    }else{
+      await Helpers.changeAppLang(context, newLang: Languages.arabic.locale);
+    }
   }
 
   @override
@@ -89,7 +98,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Container(color: Colors.grey.withOpacity(0.1),
               child: ListTile(
                 leading: const Text('الانجليزية',style: TextStyle(fontSize: 16)),
-               trailing: AdvancedSwitch(activeColor: ColorManager.blueTeal09,controller: _controller,height: 20,width: 40)
+               trailing: AdvancedSwitch(
+                   initialValue: Languages.currentLanguage == Languages.english,
+                   activeColor: ColorManager.blueTeal09,
+                   controller: _controller,
+                   onChanged: (value) => changeLang(value),
+                   height: 20, width: 40
+               )
               ),
             ),
 
