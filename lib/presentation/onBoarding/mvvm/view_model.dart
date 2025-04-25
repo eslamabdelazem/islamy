@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islamy/core/navifation/go.dart';
 import 'package:islamy/presentation/app_bottom_bar/screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../config/res/constants_manager.dart';
 import 'model.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/strings_manager.dart';
@@ -50,7 +51,7 @@ class OnBoardingViewModel extends ChangeNotifier {
         await prefs.setBool('seen_onboarding', true);
 
         if (context.mounted) {
-          Go.to(const AppBottomBar());
+          Go.to( AppBottomBar(key: key));
           // await Navigator.pushReplacementNamed(context, Routes.home);
         }
       }

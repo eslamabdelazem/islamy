@@ -249,21 +249,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  Positioned(
-                    right: 0,
-                    bottom: 0,
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomRight: Radius.circular(17),
-                      ),
-                      child: SizedBox(
-                        width: context.width/2,
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      bottomRight: Radius.circular(17),
+                    ),
+                    child: SizedBox(
+                      width: context.width/2,
+                      height: 137.h,
+                      child: Image.asset(
+                        Assets.imagesMasjid,
+                        width: 218.w,
                         height: 137.h,
-                        child: Image.asset(
-                          Assets.imagesMasjid,
-                          width: 218.w,
-                          height: 137.h,
-                        ),
                       ),
                     ),
                   ),
