@@ -7,6 +7,7 @@ import 'package:islamy/presentation/prayer_consumer/presentation/screens/main.da
 
 import '../../generated/locale_keys.g.dart';
 import '../Settings/settings.dart';
+import '../qibla/screen.dart';
 
 class AppBottomBar extends StatefulWidget {
   const AppBottomBar({super.key});
@@ -18,6 +19,7 @@ class AppBottomBar extends StatefulWidget {
 class AppBottomBarState extends State<AppBottomBar> {
   final List<Widget> screens = const [
     HomeScreen(),
+    QiblaScreen(),
     PrayerConsumer(),
     SettingsScreen()
   ];
@@ -39,6 +41,10 @@ class AppBottomBarState extends State<AppBottomBar> {
               BottomNavigationBarItem(
                 icon: const Icon(Icons.mosque_outlined),
                 label: LocaleKeys.home.tr()
+              ),
+              BottomNavigationBarItem(
+                  icon: const Icon(Icons.directions),
+                  label: 'LocaleKeys.qibla.tr()'
               ),
               BottomNavigationBarItem(
                   icon: const Icon(Icons.watch_later_outlined),

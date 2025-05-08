@@ -6,7 +6,7 @@ class ImageManager{
   static const String onboarding_1 = "${path}onboarding1.png";
   static const String onboarding_2 = "${path}onboarding2.png";
   static const String onboarding_3 = "${path}onboarding3.jpeg";
-  static const String masjid_png = "${path}masjid.png";
+  static const String masjid_png = "${path}needle.png";
   static const String masjid_svg = "${path}masjid-.svg";
   static const String next_buttton = "${path}next_buttton.png";
   static const String asr = "${path}asr.png";

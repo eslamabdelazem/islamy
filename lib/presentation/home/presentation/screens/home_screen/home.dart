@@ -165,33 +165,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   PrayerItem(
                     icon: Assets.imagesIsha,
-                    prayerName: 'عشاء',
+                    prayerName: LocaleKeys.isha.tr(),
                     time: _formatDateToHoursAndMinutes(prayerTimes!.isha),
                   ),
                   PrayerItem(
                     icon: Assets.imagesMaghrib,
-                    prayerName: 'المغرب',
+                    prayerName: LocaleKeys.maghrib.tr(),
                     time: _formatDateToHoursAndMinutes(prayerTimes!.maghrib),
                   ),
                   PrayerItem(
                     icon: Assets.imagesAsr,
-                    prayerName: 'العصر',
+                    prayerName: LocaleKeys.asr.tr(),
                     time: _formatDateToHoursAndMinutes(prayerTimes!.asr),
                   ),
 
                   PrayerItem(
                     icon: Assets.imagesAsr,
-                    prayerName: 'الظهر',
+                    prayerName: LocaleKeys.dhuhr.tr(),
                     time: _formatDateToHoursAndMinutes(prayerTimes!.dhuhr),
                   ),
                   PrayerItem(
                     icon: Assets.imagesShorouk,
-                    prayerName: 'الشروق',
+                    prayerName: LocaleKeys.sunrise.tr(),
                     time: _formatDateToHoursAndMinutes(prayerTimes!.sunrise),
                   ),
                   PrayerItem(
                     icon: Assets.imagesFagr,
-                    prayerName: 'الفجر',
+                    prayerName: LocaleKeys.fajr.tr(),
                     time: _formatDateToHoursAndMinutes(prayerTimes!.fajr),
                   ),
                 ],
@@ -238,7 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontSize: 16.sp,
                         ),
                         AppText(
-                          'الصلاة القادمة: ${prayerTimes!.nextPrayer().name}',
+                          '${LocaleKeys.next_prayer.tr()}: ${prayerTimes!.nextPrayer().name}',
                           fontWeight: FontWeight.w500,
                         ),
                         AppText(
@@ -254,7 +254,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       bottomRight: Radius.circular(17),
                     ),
                     child: SizedBox(
-                      width: context.width/2,
+                      width: context.width/2.2,
                       height: 137.h,
                       child: Image.asset(
                         Assets.imagesMasjid,
@@ -278,7 +278,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(4),
                     border: Border.all(width: 0.8, color: ColorManager.black)),
                 child: AppText(
-                  'جميع العبادات',
+                  LocaleKeys.all_religious_worship.tr(),
                   fontWeight: FontWeight.bold,
                   fontSize: 16.sp,
                 ),

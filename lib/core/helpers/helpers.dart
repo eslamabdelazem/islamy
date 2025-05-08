@@ -36,6 +36,11 @@ void callbackDispatcher() {
 
 class Helpers {
 
+  static Future<LocationModel?> getLastSavedLocation()async{
+    final locationMap = CacheStorage.read(CacheConstants.lastLocation, isDecoded: true);
+    return locationMap == null ? null : LocationModel.fromJson(locationMap);
+  }
+
   static Future<void> initWorkManager()async{
     await Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
   }

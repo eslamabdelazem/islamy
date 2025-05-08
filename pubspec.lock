@@ -558,6 +558,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  flutter_compass_v2:
+    dependency: "direct overridden"
+    description:
+      name: flutter_compass_v2
+      sha256: c17b1533a43f5192e73d2f475ec2c142cc1e193eba6a9b49433d1ab68d70606b
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   flutter_easyloading:
     dependency: "direct main"
     description:
@@ -643,6 +651,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.28"
+  flutter_qiblah:
+    dependency: "direct main"
+    description:
+      name: flutter_qiblah
+      sha256: "5184b24bd6d9931221ac8bed6dd9399cc9af709973c8b88e77a49626122e00a3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0+1"
   flutter_rating_bar:
     dependency: "direct main"
     description:
@@ -707,6 +723,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
+  flutter_sensors:
+    dependency: transitive
+    description:
+      name: flutter_sensors
+      sha256: "3ac86cd414eb127c4afb97b6d986996d5f4bd7e2223f5c9aea53c13a7022c7aa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   flutter_shaders:
     dependency: transitive
     description:
@@ -1165,14 +1189,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
+  location:
+    dependency: transitive
+    description:
+      name: location
+      sha256: "06be54f682c9073cbfec3899eb9bc8ed90faa0e17735c9d9fa7fe426f5be1dd1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.3"
+  location_platform_interface:
+    dependency: transitive
+    description:
+      name: location_platform_interface
+      sha256: "8aa1d34eeecc979d7c9fe372931d84f6d2ebbd52226a54fe1620de6fdc0753b1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.2"
+  location_web:
+    dependency: transitive
+    description:
+      name: location_web
+      sha256: ec484c66e8a4ff1ee5d044c203f4b6b71e3a0556a97b739a5bc9616de672412b
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.0"
   logger:
     dependency: transitive
     description:
       name: logger
-      sha256: be4b23575aac7ebf01f225a241eb7f6b5641eeaf43c6a8613510fc2f8cf187d1
+      sha256: "7ad7215c15420a102ec687bb320a7312afd449bac63bfb1c60d9787c27b9767f"
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.0"
+    version: "1.4.0"
   logging:
     dependency: transitive
     description:
@@ -1477,14 +1525,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.0"
-  rename:
-    dependency: "direct main"
-    description:
-      name: rename
-      sha256: "6ef5daf4b11130e71d93630cfb70725e5a35b19039739cfcd2b272c834ba25fe"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.2"
   rxdart:
     dependency: "direct main"
     description:
@@ -1501,6 +1541,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  sensors_plus:
+    dependency: transitive
+    description:
+      name: sensors_plus
+      sha256: "6898cd4490ffc27fea4de5976585e92fae55355175d46c6c3b3d719d42f9e230"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.1"
+  sensors_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: sensors_plus_platform_interface
+      sha256: bc472d6cfd622acb4f020e726433ee31788b038056691ba433fec80e448a094f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   share_plus:
     dependency: "direct main"
     description:
@@ -1626,6 +1682,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
+  smooth_compass_plus:
+    dependency: "direct main"
+    description:
+      name: smooth_compass_plus
+      sha256: "3a3be3645f5d62d4f0aaae6b97e9b70e27d17fe9308dfe39d8bf4243d37e39c9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   smooth_page_indicator:
     dependency: "direct main"
     description:
@@ -1883,7 +1947,7 @@ packages:
     source: hosted
     version: "1.1.16"
   vector_math:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: vector_math
       sha256: "80b3257d1492ce4d091729e3a67a60407d227c27241d6927be0130c98e741803"
