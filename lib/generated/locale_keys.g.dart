@@ -49,6 +49,9 @@ abstract class  LocaleKeys {
   static const main_categories = 'main_categories';
   static const whatsapp_number = 'whatsapp_number';
   static const description = 'description';
+  static const morningRemembrances = 'morningRemembrances';
+  static const eveningRemembrances = 'eveningRemembrances';
+  static const sleepRemembrances = 'sleepRemembrances';
   static const location = 'location';
   static const is_English = 'is_English';
   static const app_version = 'app_version';

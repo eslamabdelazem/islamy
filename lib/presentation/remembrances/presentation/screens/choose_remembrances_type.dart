@@ -32,7 +32,7 @@ class _ChooseRemembrancesTypeBody extends StatelessWidget {
           remembrancesTypes.length,
               (index) => InkWell(
                   onTap: () => Go.to(Remembrances(type: RemembrancesType.values[index])),
-                  child: RemembrancesCard(type: remembrancesTypes[index])
+                  child: RemembrancesCard(type: remembrancesTypes[index].tr())
               )
       ),
     );

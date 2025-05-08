@@ -96,12 +96,12 @@ class _PrayerTimeTileState extends State<PrayerTimeTile> {
             width: 40,
             height: 20,
           ),
-          leading:  Row(
+          leading: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 widget.prayerName,
-                style: TextStyle(
+                  style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: _controller.value? ColorManager.blueTeal:ColorManager.greyA1,
