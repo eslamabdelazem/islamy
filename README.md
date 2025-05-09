@@ -15,8 +15,8 @@ Islamic Prayer App is a mobile application designed to assist Muslims in their d
 Watch the demo video [here](https://drive.google.com/file/d/12aw6j0B8-cGRLTYF7th02EYZW5id99E7/preview).
 
 ## Presentation and Documentation
-- View the project presentation [here](https://github.com/eslamabdelazem/islamy/raw/main/docs/presentation.pdf).
-- View the project documentation [here](https://github.com/eslamabdelazem/islamy/raw/main/docs/documentation.pdf).
+- View the project presentation [here](https://github.com/eslamabdelazem/islamy/raw/master/docs/presentation.pdf).
+- View the project documentation [here](https://github.com/eslamabdelazem/islamy/raw/master/docs/documentation.pdf).
 
 ## System Requirements
 - **Hardware**:
