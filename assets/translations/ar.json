@@ -47,6 +47,8 @@
   "description": "الوصف",
   "morningRemembrances" : "اذكار الصباح",
   "eveningRemembrances" : "اذكار المساء",
+  "delete_all" : "مسح الكل",
+  "favorites": "المفضلة",
   "sleepRemembrances" : "اذكار النوم",
   "location" : "الموقع",
   "is_English" : "الانجليزية",

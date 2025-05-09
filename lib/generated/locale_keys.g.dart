@@ -51,6 +51,8 @@ abstract class  LocaleKeys {
   static const description = 'description';
   static const morningRemembrances = 'morningRemembrances';
   static const eveningRemembrances = 'eveningRemembrances';
+  static const delete_all = 'delete_all';
+  static const favorites = 'favorites';
   static const sleepRemembrances = 'sleepRemembrances';
   static const location = 'location';
   static const is_English = 'is_English';

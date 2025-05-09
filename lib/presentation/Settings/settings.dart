@@ -23,6 +23,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   LocationModel? location;
   Future<void> getLocation()async{
     location = await Helpers.handleGetLocation();
+    setState(() {});
   }
 
   bool isEnglish = false;
@@ -31,7 +32,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState() {
     super.initState();
-
+    getLocation();
     _controller.addListener(() {
       setState(() {
         if (_controller.value) {

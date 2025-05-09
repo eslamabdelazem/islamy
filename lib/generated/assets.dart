@@ -5,6 +5,7 @@ class Assets {
   static const String assetsImagesMasjid = 'assets/images/masjid-.svg';
   static const String audioAzan20 = 'assets/audio/azan20.mp3';
   static const String compassNeedle = 'assets/compass/needle.png';
+  static const String compassQiblaNeedle = 'assets/compass/qibla_needle.png';
   static const String fontsPacificoRegular = 'assets/fonts/Pacifico-Regular.ttf';
   static const String iconsAsr = 'assets/icons/asr.png';
   static const String iconsAzkar = 'assets/icons/azkar.png';

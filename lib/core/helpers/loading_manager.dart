@@ -24,23 +24,25 @@ class _FullScreenLoadingManagerState extends State<FullScreenLoadingManager> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: AlignmentDirectional.center,
-      children: [
-        widget.child,
-        ValueListenableBuilder(
-            valueListenable: _isLoading,
-            builder: (context, value, child) {
-              return Visibility(
-                  visible: _isLoading.value,
-                  child: Container(
-                      height: 1.sh,
-                      width: 1.sw,
-                      color: Colors.grey.withValues(alpha: 0.3),
-                      child: Center(
-                          child: CupertinoActivityIndicator(radius: 15.sp))));
-            }),
-      ],
+    return Scaffold(
+      body: Stack(
+        alignment: AlignmentDirectional.center,
+        children: [
+          widget.child,
+          ValueListenableBuilder(
+              valueListenable: _isLoading,
+              builder: (context, value, child) {
+                return Visibility(
+                    visible: _isLoading.value,
+                    child: Container(
+                        height: 1.sh,
+                        width: 1.sw,
+                        color: Colors.grey.withValues(alpha: 0.3),
+                        child: Center(
+                            child: CupertinoActivityIndicator(radius: 15.sp))));
+              }),
+        ],
+      )
     );
   }
 }

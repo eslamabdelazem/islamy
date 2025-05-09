@@ -43,7 +43,8 @@ class RemembrancesBody extends StatelessWidget {
           builder: (placeHolder, isLoading) => isLoading? CustomLoading.showLoadingView() :
           ListView.separated(
             itemBuilder: (context, index) => RemembrancesElement(
-                remembrancesText: value.remembrances[index]
+              remembrancesText: value.remembrances[index],
+              index: index,
             ),
             separatorBuilder: (context, index) => 12.szH,
             itemCount: value.remembrances.length,

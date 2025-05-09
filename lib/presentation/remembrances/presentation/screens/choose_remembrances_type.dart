@@ -4,6 +4,7 @@ import 'package:islamy/core/navifation/go.dart';
 import 'package:islamy/core/widgets/text_fields/app_bar.dart';
 import 'package:islamy/generated/locale_keys.g.dart';
 import 'package:islamy/presentation/remembrances/presentation/screens/remembrances.dart';
+import '../../../fav/screens/fav_screen.dart';
 import '../../data/data_source.dart';
 import '../widgets/remembrances_card_type.dart';
 
@@ -13,7 +14,15 @@ class ChooseRemembrancesType extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: LocaleKeys.Remembrances.tr()),
+      appBar: CustomAppBar(
+        title: LocaleKeys.Remembrances.tr(),
+        actions: [
+          IconButton(
+              onPressed: () => Go.to(const FavScreen()),
+              icon: const Icon(Icons.favorite_border)
+          )
+        ],
+      ),
       body: _ChooseRemembrancesTypeBody(),
     );
   }

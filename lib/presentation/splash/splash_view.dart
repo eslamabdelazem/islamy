@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/core/helpers/cache_service.dart';
+import 'package:islamy/core/helpers/location.dart';
 import 'package:islamy/core/navifation/go.dart';
 import 'package:islamy/presentation/app_bottom_bar/screen.dart';
 import 'package:islamy/presentation/resources/assets_manager.dart';
@@ -26,14 +28,14 @@ class _SplashViewState extends State<SplashView> {
 
         if (seenOnboarding) {
           // Navigator.pushReplacementNamed(context, Routes.home);
-          Go.replacementBy(AppBottomBar(key: key));
+          Go.offAll(AppBottomBar(key: key));
         } else {
           // Navigator.pushReplacementNamed(context, Rxoutes.onBoardingRoute);
-          Go.replacementBy(const OnBoardingView());
+          Go.offAll(const OnBoardingView());
         }
       } catch (e) {
         // Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
-        Go.replacementBy(const OnBoardingView());
+        Go.offAll(const OnBoardingView());
       }
     }
   }

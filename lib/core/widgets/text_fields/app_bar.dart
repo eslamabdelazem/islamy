@@ -6,8 +6,11 @@ import 'package:islamy/core/widgets/app_text.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
 
   final String title;
+  final List<Widget> actions;
+
   const CustomAppBar({super.key,
     required this.title,
+    this.actions = const [],
   });
 
   @override
@@ -16,6 +19,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
         preferredSize: Size(double.infinity, 60.h),
         child: AppBar(
           backgroundColor: Colors.white,
+          actions: actions,
           title: AppText(
               title,
               color: AppColors.primaryColor,

@@ -102,10 +102,11 @@ class _LocationBodyState extends State<_LocationBodyWithNamed> {
     late Position position;
     try {
       position = await Geolocator.getCurrentPosition(locationSettings: locationSettings);
+      currentLatLng = LatLng(position.latitude, position.longitude);
+      log('the position is ${currentLatLng.latitude.toString()}');
     } catch (e) {
       log('error :$e');
     }
-    currentLatLng = LatLng(position.latitude, position.longitude);
   }
 
   Future<void> saveLastLocation() async =>
@@ -117,15 +118,17 @@ class _LocationBodyState extends State<_LocationBodyWithNamed> {
   LocationModel? locationModel;
 
   Future<void> getLocationBasedLatLng() async {
-    log('reFetching location');
     List<Placemark> locations = await placemarkFromCoordinates(
         currentLatLng.latitude,
         currentLatLng.longitude
     );
-    locations[0].toJson().addAll({'lat' : currentLatLng.latitude, 'lng' : currentLatLng.longitude});
-    locationModel = LocationModel.fromJson(locations[0].toJson());
-    log('the full model ${locationModel?.toJson()}');
-    log('street : ${locationModel?.street.toString()}');
+    Map<String, dynamic> locationMap = locations[0].toJson();
+    locationMap['lat'] = currentLatLng.latitude;
+    locationMap['lng'] = currentLatLng.longitude;
+    locationModel = LocationModel.fromJson(locationMap);
+
+    // log('the full model ${locationModel?.toJson()}');
+    // log('street : ${locationModel?.street.toString()}');
   }
 
   late GoogleMapController mapsController;
@@ -233,15 +236,16 @@ class _LocationBodyState extends State<_LocationBodyWithNamed> {
                 //           LocaleKeys.mapDescription,
                 //       address: locationModel?.street ?? '',
                 //     ));
-                //
-                // switch (widget.method) {
-                //   case NavigationMethod.push:
-                //     Go.offAll(const AppBottomBar());
-                //
-                //   default:
-                //     Navigator.pop(context, 'locationChanged');
-                // }
-                await saveLastLocation();
+
+                    await saveLastLocation();
+
+                switch (widget.method) {
+                  case NavigationMethod.push:
+                    Go.offAll(const BottomAppBar());
+
+                  default:
+                    Navigator.pop(context, 'locationChanged');
+                }
               },
             ).paddingAll(20),
           )

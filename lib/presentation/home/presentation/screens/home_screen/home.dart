@@ -32,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   bool isLoading = false;
   PrayerTimes? prayerTimes;
-
   LocationModel? location;
 
   Future<void> getLocation()async{
@@ -91,6 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<String> categories = [
     LocaleKeys.Remembrances,
+    LocaleKeys.qibla_direction,
     LocaleKeys.prayer_times,
   ];
   @override
@@ -114,25 +114,29 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               children: [
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppText(
                       LocaleKeys.Location.tr(),
                       color: Colors.grey,
                       fontSize: 12.sp,
                     ),
-                    InkWell(
-                      onTap: ()async {
-                        final result = await Go.to(
-                            const LocationScreenWithNamed.detectCurrentUserLocation(method: NavigationMethod.pop)
-                        );
-                        if(result == 'locationChanged'){
-                          getLocation();
-                        }
-                      },
-                      child: AppText(
-                        location?.street?? LocaleKeys.cannot_access_location.tr(),
-                        // style: TextStyles.black18Medium,
+                    SizedBox(
+                      width: context.width / 2,
+                      child: InkWell(
+                        onTap: ()async {
+                          final result = await Go.to(
+                              const LocationScreenWithNamed.detectCurrentUserLocation(method: NavigationMethod.pop)
+                          );
+                          if(result == 'locationChanged'){
+                            getLocation();
+                          }
+                        },
+                        child: AppText(
+                          maxLines: 2,
+                          location?.street?? LocaleKeys.cannot_access_location.tr(),
+                          // style: TextStyles.black18Medium,
+                        ),
                       ),
                     ),
                   ],
@@ -298,6 +302,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         
                       case 1:
                         key.currentState!.changeScreen(1);
+
+
+                      case 2:
+                        key.currentState!.changeScreen(2);
                     }
                   },
                   child: HomeCategory(icon: Assets.iconsTimeclock, text: categories[index].tr())),

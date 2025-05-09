@@ -8,6 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:islamy/core/extensions/padding_extension.dart';
 import 'package:islamy/generated/assets.dart';
+import 'package:islamy/presentation/fav/data/data_src/data_source.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../config/res/app_sizes.dart';
@@ -15,6 +16,7 @@ import '../../config/res/color_manager.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../config/res/constants_manager.dart';
 import '../../generated/locale_keys.g.dart';
+import '../../presentation/fav/data/data_src/repo.dart';
 import '../navifation/go.dart';
 import '../shared/models/location.dart';
 import '../widgets/custom_loading.dart';
@@ -35,6 +37,12 @@ void callbackDispatcher() {
 }
 
 class Helpers {
+
+  static FavoritesRepository? favoritesRepository;
+
+  static void setFavRepo(LocalDatabase objectBox){
+    favoritesRepository = FavoritesRepository(objectBox);
+  }
 
   static Future<LocationModel?> getLastSavedLocation()async{
     final locationMap = CacheStorage.read(CacheConstants.lastLocation, isDecoded: true);

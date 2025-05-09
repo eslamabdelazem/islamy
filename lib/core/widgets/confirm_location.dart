@@ -25,7 +25,7 @@ class ConfirmLocation extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: 10.h,
         children: [
-          Expanded(child: AppText(location, color: Colors.black87)),
+          AppText(location, color: Colors.black87),
           LoadingButton(title: LocaleKeys.confirm_location.tr(), onTap: onConfirmLocation)
         ],
       ).paddingAll(10),

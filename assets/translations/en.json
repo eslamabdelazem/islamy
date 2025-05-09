@@ -96,6 +96,8 @@
   "submit": "Submit",
   "sign_up": "Sign up",
   "email": "Email",
+  "delete_all" : "Delete All",
+  "favorites": "Favorites",
   "place_rate": "Place Rate",
   "your_evaluation_matters_to_us": "Your evaluation matters to us",
   "sign_in": "Sign In",
