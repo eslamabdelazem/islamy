@@ -82,8 +82,6 @@ The app uses the [Aladhan API](http://api.aladhan.com/) to fetch prayer times an
 - **Hijri Calendar**: `GET /v1/gToH` - Converts Gregorian dates to Hijri.
 For detailed documentation, visit [Aladhan API Docs](http://api.aladhan.com/).
 
-## Executable Files
-- **Android**: Download the `.apk` file from the [Releases](https://github.com/eslamabdelazem/islamy/releases) section if available.
 
 ## Project Structure
 - `/lib`: Main source code (Dart files).
